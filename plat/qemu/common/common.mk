@@ -146,6 +146,10 @@ ifeq (${CTX_INCLUDE_AARCH32_REGS}, 1)
 $(error "This is an AArch64-only port; CTX_INCLUDE_AARCH32_REGS must be disabled")
 endif
 
+ifeq (${TRNG_SUPPORT},1)
+	BL31_SOURCES	+=	plat/arm/board/tc/tc_trng.c
+endif
+
 # Pointer Authentication sources
 ifeq (${ENABLE_PAUTH}, 1)
 PLAT_BL_COMMON_SOURCES	+=	plat/arm/common/aarch64/arm_pauth.c
